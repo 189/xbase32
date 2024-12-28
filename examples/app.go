@@ -18,4 +18,16 @@ func main() {
 	}
 
 	fmt.Println(encoded)
+
+	str = "hello world"
+	encoded, err = base32.Encode([]byte(str), "RFC4648", &base32.Options{
+		Padding: nil,
+	})
+
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	fmt.Println(encoded)
 }
