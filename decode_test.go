@@ -25,20 +25,20 @@ func TestDecode(t *testing.T) {
 		{
 			input:   "CO======",
 			variant: "RFC4648-HEX",
-			want:    []byte{0x5c},
+			want:    []byte{102},
 			wantErr: nil,
 		},
 		{
-			input:   "91JPRV3F41BMFWPCCG",
+			input:   "D1JPRV3F41VPYWKCCG",
 			variant: "Crockford",
 			want:    []byte("hello world"),
 			wantErr: nil,
 		},
 		{
-			input:   "MZXW6===",
+			input:   "MZXW6/==",
 			variant: "RFC4648",
 			want:    nil,
-			wantErr: errors.New("invalid character found: ="),
+			wantErr: errors.New("invalid character found: /"),
 		},
 		{
 			input:   "INVALID",
@@ -55,13 +55,12 @@ func TestDecode(t *testing.T) {
 			got, err := Decode(item.input, item.variant)
 			if !bytes.Equal(got, item.want) {
 				t.Errorf("Decode(%q, %q) = %v, want %v", item.input, item.variant, got, item.want)
+				return
 			}
 
 			if (err == nil && item.wantErr != nil) || (err != nil && item.wantErr == nil) || (err != nil && item.wantErr != nil && item.wantErr.Error() != err.Error()) {
 				t.Errorf("Decode(%q, %q) error = %v, wantErr %v", item.input, item.variant, err, item.wantErr)
 			}
-
 		})
 	}
-
 }

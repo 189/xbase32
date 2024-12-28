@@ -6,12 +6,6 @@ import (
 	"strings"
 )
 
-const (
-	RFC4648     = "ABCDEFGHIJKLMNOPQRSTUVWXYZ234567"
-	RFC4648_HEX = "0123456789ABCDEFGHIJKLMNOPQRSTUV"
-	CROCKFORD   = "0123456789ABCDEFGHJKMNPQRSTVWXYZ"
-)
-
 func readChar(alphabet string, char rune) (int, error) {
 	idx := strings.IndexRune(alphabet, char)
 	if idx == -1 {
