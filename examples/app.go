@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"gitub.com/189/base32"
+	base32 "gitub.com/189/xbase32"
 )
 
 func main() {
