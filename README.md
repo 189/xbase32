@@ -2,7 +2,7 @@
 
 Package base32 implements base32 encoding as specified by RFC 4648, RFC 4648 Hex, Crockford.
 
-> The standard library in Golang does not support Crockford characters
+> The standard library in Golang does not support encoding/decoding as specified by Crockford
 
 ## Installation
 
