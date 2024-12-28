@@ -7,27 +7,23 @@ import (
 )
 
 func main() {
+	variant := "Crockford"
 	str := "hello world"
-	encoded, err := base32.Encode([]byte(str), "Crockford", &base32.Options{
+
+	encoded, err := base32.Encode([]byte(str), variant, &base32.Options{
 		Padding: nil,
 	})
-
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
+	fmt.Println(encoded) // output: D1JPRV3F41VPYWKCCG
 
-	fmt.Println(encoded)
-
-	str = "hello world"
-	encoded, err = base32.Encode([]byte(str), "RFC4648", &base32.Options{
-		Padding: nil,
-	})
-
-	if err != nil {
-		fmt.Println(err)
+	ret, e := base32.Decode(encoded, variant)
+	if e != nil {
+		fmt.Println(e)
 		return
 	}
 
-	fmt.Println(encoded)
+	fmt.Println(string(ret) == str) // output: true
 }
